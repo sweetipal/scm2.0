@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>This is Services  page</h1>
+	<div th:replace="~{base :: parent(~{::.third})}">
+		<section id="main-content">
+			<h1>This is dynamic content</h1>
+		</section>
+		<section id="second-content">
+			<h1>This is second dynamic content</h1>
+		</section>
+		<section class="third" >
+			<h1>This is third dynamic content</h1>
+		</section>
+	</div>
+</body>
+</html>

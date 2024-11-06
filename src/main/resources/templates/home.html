@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{'/css/output.css'}">
+<link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="bg-gray-200 w-1/2 p-4 flex flex-col items-center space-y-3 mx-auto mt-4">
+        <h1 class="text-2xl font-bold" data-th-text="${FirstName}">Welcome to home page</h1>
+        <p class="text-xl text-gray-700">Last Name: <span data-th-text="${LastName}"></span></p>
+        <p>Designation: <span th:text="${profile}"></span></p>
+        <a th:href="${linkdin}">Click here to open</a>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores eligendi, quisquam reprehenderit minus animi facere, mollitia nesciunt reiciendis ullam necessitatibus esse quod. Excepturi odit magnam vero odio aliquid. Cum, excepturi!</p>
+        <div><button class="px-3 py-3 rounded bg-blue-700 text-white hover:  bg-blue-600">Click Here</button></div>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+</body>
+</html>

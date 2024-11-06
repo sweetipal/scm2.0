@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<h1>This is about page</h1>
+	<div class="host-tag" th:replace="~{base :: parent(~{::section})}">
+		<section>
+			<h1>This is dynamic content</h1>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores eligendi, quisquam reprehenderit
+				minus animi facere, mollitia nesciunt reiciendis ullam necessitatibus esse quod. Excepturi odit magnam
+				vero odio aliquid. Cum, excepturi!</p>
+				<button>click on dynamic content</button>
+				
+
+		</section>
+	</div>
+</body>
+
+</html>
