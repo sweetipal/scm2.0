@@ -6,31 +6,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PageController {
-	//routes
+	// routes
 	@RequestMapping("/home")
 	public String home(Model model) {
 		System.out.println("Home page handler");
-		model.addAttribute("FirstName","Sweety");
-		model.addAttribute("LastName","Pal");
-		model.addAttribute("profile","Java Developer");
-		model.addAttribute("linkdin","https://www.linkedin.com/in/sweeti-pal-2b2477240/");
+		model.addAttribute("FirstName", "Sweety");
+		model.addAttribute("LastName", "Pal");
+		model.addAttribute("profile", "Java Developer");
+		model.addAttribute("linkdin", "https://www.linkedin.com/in/sweeti-pal-2b2477240/");
 		return "home";
 	}
-	
-	//About route
+
+	// About route
 	@RequestMapping("/about")
 	public String aboutPage(Model model) {
-		model.addAttribute("isLogin","false");
+		model.addAttribute("isLogin", "false");
 		System.out.println("About page loading");
 		return "about";
 	}
+
 	@RequestMapping("/services")
 	public String servicePage() {
 		System.out.println("Srvices page loading");
 		return "services";
 	}
-	
-	
-	
+
+	@RequestMapping("/contact")
+	public String contactPage() {
+		System.out.println("Srvices page loading");
+		return "contact";
+	}
+
+	@RequestMapping("/login")
+	public String loginPage() {
+		System.out.println("Srvices page loading");
+		return "login";
+	}
+
+	@RequestMapping("/register")
+	public String signupPage() {
+		System.out.println("Srvices page loading");
+		return "register";
+	}
 
 }
