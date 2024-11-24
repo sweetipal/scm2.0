@@ -17,7 +17,6 @@ public class SocialLink {
 	private Contact contact;
 
 	public SocialLink() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public SocialLink(Long id, String link, String title) {
