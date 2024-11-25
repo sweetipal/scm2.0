@@ -1,11 +1,22 @@
 package com.scm.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.scm.entities.User;
+import com.scm.forms.UserForm;
+import com.scm.serviceImpl.UserServiceImpl;
+import com.scm.services.UserService;
 
 @Controller
 public class PageController {
+	@Autowired
+	private UserService userService;
+
 	// routes
 	@RequestMapping("/home")
 	public String home(Model model) {
@@ -44,9 +55,33 @@ public class PageController {
 	}
 
 	@RequestMapping("/register")
-	public String signupPage() {
-		System.out.println("Srvices page loading");
+	public String signupPage(Model model) {
+		UserForm userForm = new UserForm();
+
+		model.addAttribute("userForm", userForm);
 		return "register";
 	}
 
+	// Processing register
+	@RequestMapping(value = "/do-register", method = RequestMethod.POST)
+	public String processRegister(@ModelAttribute UserForm userForm) {
+		//Fetch the form data
+		System.out.println(userForm);
+
+		//To do
+		//validate form data
+		//save to db
+		User user = new User();
+		user.setName(userForm.getName());
+		user.setEmail(userForm.getEmail());
+		user.setPassword(userForm.getPassword());
+		user.setAbout(userForm.getAbout());
+		user.setPhoneNumber(userForm.getPhoneNumber());
+		user.setProfilePic("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fdefault-profile&psig=AOvVaw1IY_lNe2IohYut2p6YsZDm&ust=1732644033312000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKC4-5OI-IkDFQAAAAAdAAAAABAJ");
+		User savedUser = userService.saveUser(user);
+		System.out.println("User saved...");
+		//message
+		//redirct to login page
+		return "redirect:/register";
+	}
 }
