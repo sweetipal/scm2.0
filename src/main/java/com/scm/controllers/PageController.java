@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.scm.entities.User;
 import com.scm.forms.UserForm;
-import com.scm.serviceImpl.UserServiceImpl;
+import com.scm.helper.Message;
+import com.scm.helper.MessageType;
 import com.scm.services.UserService;
+
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class PageController {
@@ -64,12 +68,12 @@ public class PageController {
 
 	// Processing register
 	@RequestMapping(value = "/do-register", method = RequestMethod.POST)
-	public String processRegister(@ModelAttribute UserForm userForm) {
+	public String processRegister(@ModelAttribute UserForm userForm,  HttpSession session) {
 		//Fetch the form data
 		System.out.println(userForm);
 
 		//To do
-		//validate form data
+		//validate form datasession
 		//save to db
 		User user = new User();
 		user.setName(userForm.getName());
@@ -77,10 +81,15 @@ public class PageController {
 		user.setPassword(userForm.getPassword());
 		user.setAbout(userForm.getAbout());
 		user.setPhoneNumber(userForm.getPhoneNumber());
+		//user.setEnabled(true);
 		user.setProfilePic("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fdefault-profile&psig=AOvVaw1IY_lNe2IohYut2p6YsZDm&ust=1732644033312000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKC4-5OI-IkDFQAAAAAdAAAAABAJ");
 		User savedUser = userService.saveUser(user);
 		System.out.println("User saved...");
 		//message
+		Message message = new Message();
+		message.setContent("Registered Successfully...");
+		message.setType(MessageType.green);
+		session.setAttribute("message",message);
 		//redirct to login page
 		return "redirect:/register";
 	}
